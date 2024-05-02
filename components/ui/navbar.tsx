@@ -277,7 +277,7 @@ const Navbar = () => {
          
           <Link href='/' className='pl-2'>
             {/* <Logo variant={lightNav ? 'default' : 'dark'} /> */}
-            <Image src={"/logo.png"} width={200} height={60} alt=''/>
+            <Image src={"/logo.svg"} width={200} height={60} alt=''/>
           </Link>
           <div className={`hidden lg:flex gap-7 transition-all duration-500 ${lightNav ? "" :" opacity-0 w-0 overflow-hidden"}`}>
             {

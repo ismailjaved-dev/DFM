@@ -30,7 +30,7 @@ const ProductContainer = () => {
 
   return (
     <section className="max-w-fluid p-5">
-      {/* <Image src={'/ellipse.png'} width={200} height={200} alt=''/> */}
+      {/* <Image src={'/roundedBorder.svg'} width={200} height={200} alt=''/> */}
       <div className="flex flex-col items-center gap-5 ">
         <p className="tag">
           Solutions

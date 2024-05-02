@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className="bg-[#0B101D] w-full flex flex-wrap justify-center">
       <div className="max-w-fluid p-5 w-full py-10 flex flex-wrap justify-between items-center">
-        <Image src={"/logo.png"} width={220} height={61} alt="logo" />
+        <Image src={"/logo.svg"} width={220} height={61} alt="logo" />
         <div className="hidden sm:flex gap-6">
           <InstagramIcon size={25} className="text-white/15 cursor-pointer transition hover:text-white"/>
           <LinkedinIcon size={25} className="text-white/15 cursor-pointer transition hover:text-white"/>
