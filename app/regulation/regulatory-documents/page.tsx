@@ -33,7 +33,7 @@ const page = () => {
      <div className='fluid-container grid sm:grid-cols-2 md:grid-cols-3 gap-5'>
        {
         data.map((res,index)=>{
-          return <div className='cardBg p-5 lg:p-10 rounded-[15px] flex flex-col gap-5 items-center'>
+          return <div className='cardBg p-5 lg:p-10 rounded-[15px] flex flex-col gap-5 items-center' key={index}>
             <Image src={res.img} width={200} height={200} alt='' className='!w-[90%] object-cover'/>
              <p className='text-center'>{res.title}</p>
           </div>

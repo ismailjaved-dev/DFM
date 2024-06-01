@@ -10,9 +10,6 @@ const page = () => {
         <h1 className="text-h3 sm:text-h2 md:text-h1 leading-[130%] text-center">
       Contact
         </h1>
-      
-       
-
   
     </div>
     </section>
