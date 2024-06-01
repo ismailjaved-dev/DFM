@@ -9,7 +9,9 @@ const page = () => {
       <div className="fluid-container isolate pt-[10rem] md:pt-[15rem] pb-[3rem] sm:pb-[5rem] relative grid lg:grid-cols-2 gap-10 items-center p-5">
         <div className="hidden w-full lg:block relative before:bg-[#9747FF] before:-z-10 before:opacity-10 before:blur-[100px] before:rounded-[100px] before:left-[0rem] before:absolute before:block before:h-[25rem] before:w-full">
           <p className="tag md:mb-6">Contact Us</p>
-          <h3 className="text-h2 leading-none">Let's Start the Conversation</h3>
+          <h3 className="text-h2 leading-none">
+            Let&apos;s Start the Conversation
+          </h3>
         </div>
         <div className="grid col-span-full lg:grid-cols-2 md:gap-[20px] gap-3">
           <div>
@@ -41,10 +43,10 @@ const page = () => {
             </div>
             <div className="cardBg sm:p-[2.5rem] p-[1.25rem] rounded-2xl ">
               <p className="tag">Drop us a Line</p>
-              <h4 className="text-h4">Let's Get Started!</h4>
+              <h4 className="text-h4">Let&apos;s Get Started!</h4>
               <p className="opacity-50 text-base font-normal">
-                We're excited to hear from you and discuss how we can help with
-                your project or answer any questions you may have.
+                We&apos;re excited to hear from you and discuss how we can help
+                with your project or answer any questions you may have.
               </p>
               <form className="flex flex-col gap-[10px] mt-[20px]" action="">
                 <input
