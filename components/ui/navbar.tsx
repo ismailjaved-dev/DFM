@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { useIsTab } from "@/lib/isMobile";
 import Image from "next/image";
+import { ChevronDownIcon } from "lucide-react";
 
 const Navbar = () => {
   const [lightNav, setLightNav] = useState(false);
@@ -52,10 +53,6 @@ const Navbar = () => {
 
   const data = [
     {
-      label: "Home",
-      path: "/",
-    },
-    {
       label: "About Us",
       path: "/about",
     },
@@ -68,18 +65,48 @@ const Navbar = () => {
       path: "/",
     },
     {
-      label: "Regulation",
+      label: "Regulations",
       path: "/",
     },
     {
       label: "Blog",
       path: "/",
     },
-    // {
-    //     label: 'Contact',
-    //     path: '/'
-    //   },
   ];
+
+  const prodcutData = (
+    <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
+      <Link
+        href="/products/liquidity"
+        className="text-sm text-white font-semibold"
+      >
+        Liquidity
+      </Link>
+      <Link
+        href="/products/technology"
+        className="text-sm text-white font-semibold"
+      >
+        Technology
+      </Link>
+    </div>
+  );
+
+  const regulationsData = (
+    <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
+      <Link
+        href="/regulation/regulatory-documents"
+        className="text-sm text-nowrap text-white font-semibold"
+      >
+        Regulatory Documents
+      </Link>
+      <Link
+        href="/regulation/regulatory-information"
+        className="text-sm text-nowrap text-white font-semibold"
+      >
+        Regulatory Information
+      </Link>
+    </div>
+  );
 
   return (
     <div className="fixed top-0 left-0 w-full z-[9999] px-5">
@@ -102,13 +129,23 @@ const Navbar = () => {
           >
             {data.map((res, index) => {
               return (
-                <Link
-                  href={res.path}
-                  key={index}
-                  className="text-sm text-white font-semibold"
+                <div
+                  className={`relative ${
+                    res.label === "Products" ? "hoverDD" : ""
+                  } ${res.label === "Regulations" ? "hoverDD" : ""}`}
                 >
-                  {res.label}
-                </Link>
+                  <Link
+                    href={res.path}
+                    key={index}
+                    className="text-sm text-white font-semibold flex gap-2"
+                  >
+                    {res.label}
+                    {res.label === "Products" ? <ChevronDownIcon /> : ""}
+                    {res.label === "Regulations" ? <ChevronDownIcon /> : ""}
+                  </Link>
+                  {res.label === "Products" ? prodcutData : ""}
+                  {res.label === "Regulations" ? regulationsData : ""}
+                </div>
               );
             })}
           </div>
