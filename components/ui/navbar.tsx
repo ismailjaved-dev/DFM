@@ -127,7 +127,7 @@ const Navbar = () => {
               lightNav ? "" : " opacity-0 w-0 overflow-hidden"
             }`}
           >
-            {data.map((res, index) => {
+            {/* {data.map((res, index) => {
               return (
                 <div
                   key={index}
@@ -143,11 +143,79 @@ const Navbar = () => {
                     {res.label === "Products" ? <ChevronDownIcon /> : ""}
                     {res.label === "Regulations" ? <ChevronDownIcon /> : ""}
                   </Link>
-                  {res.label === "Products" ? prodcutData : ""}
-                  {res.label === "Regulations" ? regulationsData : ""}
+                  {res.label === "Products" ? prodcutData : null}
+                  {res.label === "Regulations" ? regulationsData : null}
                 </div>
               );
-            })}
+            })} */}
+            <div className="relative">
+              <Link
+                href="/about"
+                className="text-sm text-white font-semibold flex gap-2"
+              >
+                About Us
+              </Link>
+            </div>
+            <div className="relative hoverDD">
+              <Link
+                href=""
+                className="text-sm text-white font-semibold flex gap-2 "
+              >
+                Products <ChevronDownIcon />
+              </Link>
+              <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
+                <Link
+                  href="/products/liquidity"
+                  className="text-sm text-white font-semibold"
+                >
+                  Liquidity
+                </Link>
+                <Link
+                  href="/products/technology"
+                  className="text-sm text-white font-semibold"
+                >
+                  Technology
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <Link
+                href="/"
+                className="text-sm text-white font-semibold flex gap-2"
+              >
+                Trending Shedule
+              </Link>
+            </div>
+            <div className="relative hoverDD">
+              <Link
+                href=""
+                className="text-sm text-white font-semibold flex gap-2"
+              >
+                Regulations <ChevronDownIcon />
+              </Link>
+              <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
+                <Link
+                  href="/regulation/regulatory-documents"
+                  className="text-sm text-nowrap text-white font-semibold"
+                >
+                  Regulatory Documents
+                </Link>
+                <Link
+                  href="/regulation/regulatory-information"
+                  className="text-sm text-nowrap text-white font-semibold"
+                >
+                  Regulatory Information
+                </Link>
+              </div>
+            </div>
+            <div className="relative">
+              <Link
+                href=""
+                className="text-sm text-white font-semibold flex gap-2"
+              >
+                Blog
+              </Link>
+            </div>
           </div>
           <div className="hidden lg:flex gap-3">
             <Button variant={lightNav ? "outline" : "secondary"}>
