@@ -130,13 +130,13 @@ const Navbar = () => {
             {data.map((res, index) => {
               return (
                 <div
+                  key={index}
                   className={`relative ${
                     res.label === "Products" ? "hoverDD" : ""
                   } ${res.label === "Regulations" ? "hoverDD" : ""}`}
                 >
                   <Link
                     href={res.path}
-                    key={index}
                     className="text-sm text-white font-semibold flex gap-2"
                   >
                     {res.label}
