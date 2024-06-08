@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "./button";
 import { usePathname } from "next/navigation";
@@ -14,8 +14,10 @@ const Navbar = () => {
   const [lightNav, setLightNav] = useState(false);
   const [menuExpanded, setMenuExpanded] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [dropdownStates, setDropdownStates] = useState<{
+    [key: number]: boolean;
+  }>({});
   const pathname = usePathname();
-  const MotionLink = motion(Link);
 
   const handleMenu = () => {
     setMenuExpanded(!menuExpanded); // Toggle the current state
@@ -74,40 +76,19 @@ const Navbar = () => {
     },
   ];
 
-  const prodcutData = (
-    <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
-      <Link
-        href="/products/liquidity"
-        className="text-sm text-white font-semibold"
-      >
-        Liquidity
-      </Link>
-      <Link
-        href="/products/technology"
-        className="text-sm text-white font-semibold"
-      >
-        Technology
-      </Link>
-    </div>
-  );
+  const handleDropDown = (index: any) => {
+    setDropdownStates((prevStates) => ({
+      ...prevStates,
+      [index]: !prevStates[index],
+    }));
+  };
 
-  const regulationsData = (
-    <div className="absolute flex flex-col top-[24px] cardBg p-6 gap-2 rounded-xl opacity-0 pointer-events-none">
-      <Link
-        href="/regulation/regulatory-documents"
-        className="text-sm text-nowrap text-white font-semibold"
-      >
-        Regulatory Documents
-      </Link>
-      <Link
-        href="/regulation/regulatory-information"
-        className="text-sm text-nowrap text-white font-semibold"
-      >
-        Regulatory Information
-      </Link>
-    </div>
-  );
-
+  const handleDropDownClosing = (index: any) => {
+    setDropdownStates((prevStates) => ({
+      ...prevStates,
+      [index]: !prevStates[index],
+    }));
+  };
   return (
     <div className="fixed top-0 left-0 w-full z-[9999] px-5">
       <div className="flex flex-col fluid-container gap-3 py-3 ">
@@ -277,9 +258,11 @@ const Navbar = () => {
           {menuExpanded && (
             <motion.ul
               className={cn(
-                "p-3 rounded-xl border flex gap-3 flex-col lg:flex-row overflow-hidden duration-500 ",
+                "p-3 rounded-xl border flex gap-3 flex-col lg:flex-row duration-500 ",
                 lightNav
-                  ? "lg:!opacity-0 border-white border-opacity-15 bg-surface bg-opacity-5 backdrop-blur-md pointer-events-none"
+                  ? `lg:!opacity-0 border-white border-opacity-15 bg-surface bg-opacity-5 backdrop-blur-md ${
+                      isTab ? "" : "pointer-events-none"
+                    }`
                   : "border-white border-opacity-15 bg-surface bg-opacity-5 backdrop-blur-md"
               )}
               initial={{ opacity: 0, height: 0 }}
@@ -290,20 +273,86 @@ const Navbar = () => {
               {data.map((item, index) => (
                 <motion.li
                   key={index}
-                  className="flex justify-center items-center w-full relative z-10"
+                  className="flex justify-center items-center w-full relative z-10 flex-col"
+                  onClick={() => handleDropDown(index)}
+                  onMouseEnter={() => (!isTab ? handleDropDown(index) : null)}
+                  onMouseLeave={() =>
+                    !isTab ? handleDropDownClosing(index) : null
+                  }
                 >
-                  <MotionLink
-                    href={item.path}
+                  <Link
+                    href={
+                      item.label === "Products" || item.label === "Regulations"
+                        ? "javascript:void(0)"
+                        : item.path
+                    }
                     className={cn(
                       "w-full text-center font-medium text-sm transition-all py-5",
                       lightNav ? "text-white" : "text-white"
                     )}
                   >
-                    <span>{item.label}</span>
-                  </MotionLink>
-                  {/* {pathname === item.path ? (
-                        <motion.div transition={{type: "spring", bounce: 0.15}} layout layoutId='underline' className={cn("absolute rounded-[.3125rem] left-0 bottom-0 bg-surface w-full h-full -z-10", lightNav ? "bg-opacity-15 border border-white border-opacity-5" : "bg-opacity-15 border border-white border-opacity-5")}></motion.div>
-                      ) : null} */}
+                    <span className="w-fit flex gap-1 m-auto">
+                      {item.label}{" "}
+                      {item.label === "Products" ? (
+                        <span className=" w-3 svg_icon-container">
+                          <ChevronDownIcon />
+                        </span>
+                      ) : null}
+                      {item.label === "Regulations" ? (
+                        <span className=" w-3 svg_icon-container">
+                          <ChevronDownIcon />
+                        </span>
+                      ) : null}
+                    </span>
+                  </Link>
+                  <>
+                    {item.label === "Products" && dropdownStates[index] ? (
+                      <motion.div
+                        layout
+                        className={`grid place-items-center transform-origin-top items-center gap-1 rounded-xl h-auto opacity-100 ${
+                          !isTab
+                            ? "absolute flex flex-col top-12 cardBg p-6 gap-2 rounded-xl opacity-0"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          href="/products/liquidity"
+                          className="text-sm text-white font-semibold"
+                        >
+                          Liquidity
+                        </Link>
+                        <Link
+                          href="/products/technology"
+                          className="text-sm text-white font-semibold"
+                        >
+                          Technology
+                        </Link>
+                      </motion.div>
+                    ) : null}
+                    {item.label === "Regulations" && dropdownStates[index] ? (
+                      <motion.div
+                        layout
+                        className={`grid place-items-center transform-origin-top items-center gap-1 rounded-xl h-auto opacity-100 ${
+                          !isTab
+                            ? "absolute flex flex-col top-12 cardBg p-6 gap-2 rounded-xl opacity-0"
+                            : ""
+                        }`}
+                      >
+                        <Link
+                          href="/regulation/regulatory-documents"
+                          className="text-sm text-nowrap text-white font-semibold"
+                        >
+                          Regulatory Documents
+                        </Link>
+                        <Link
+                          href="/regulation/regulatory-information"
+                          className="text-sm text-nowrap text-white font-semibold"
+                        >
+                          Regulatory Information
+                        </Link>
+                      </motion.div>
+                    ) : null}
+                  </>
                 </motion.li>
               ))}
             </motion.ul>

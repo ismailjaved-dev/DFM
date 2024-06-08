@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { usePathname } from "next/navigation";
 
@@ -22,10 +22,14 @@ const CoreValuesSection = () => {
     },
   ];
 
-  const pathname = usePathname().split("/")[1]
+  const pathname = usePathname().split("/")[1];
 
   return (
-    <section className={`${pathname == 'about' && "bg-[#0B101D]"} relative isolate w-full grid xl:px-0 px-5`}>
+    <section
+      className={`${
+        pathname == "about" && "bg-[#080C15]"
+      } relative isolate w-full grid xl:px-0 px-5`}
+    >
       <div className="fluid-container relative">
         <div className="gradientLine relative z-[-1] my-16"></div>
         <div className="rounded-[30px] grid lg:grid-cols-2 gap-y-4 gap-x-12">

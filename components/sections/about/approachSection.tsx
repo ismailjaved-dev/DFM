@@ -2,7 +2,8 @@ import Image from "next/image";
 
 const ApproachSection = () => {
   return (
-    <section className="bg-[#0B101D] w-full overflow-hidden relative isolate xl:px-0 px-5">
+    <section className="bg-[#080C15] w-full overflow-hidden relative isolate xl:px-0 px-5">
+      <div className="w-[25rem] h-[25rem] absolute -z-10 bg-[#9747FF] opacity-20 blur-[100px] rounded-full -translate-x-1/2 -translate-y-1/2 top-[50%] left-[50%] block"></div>
       <div className="fluid-container grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-[1.875rem]">
         <div className="cardBg p-[1.875rem] rounded-2xl hidden md:flex flex-col gap-4 lg:justify-between md:justify-center md:items-start items-center lg:col-span-1">
           <Image alt="" src="/dfm-image.svg" width="350" height="280" />

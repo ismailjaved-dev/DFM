@@ -25,7 +25,7 @@
   }
 
   .gradientLine {
-    @apply h-[1px] w-full my-[3rem] sm:my-[6rem];
+    @apply h-[1px] w-full my-[3rem] sm:my-[4rem];
   }
 
   .starImg {
@@ -41,7 +41,9 @@
     );
   }
 }
-
+body {
+  scroll-behavior: smooth;
+}
 .swiper-slide {
   transform: scale(0.9) !important;
   transition: 1s ease !important;
@@ -81,4 +83,46 @@
 }
 .hoverDD svg {
   width: 15px;
+}
+.svg_icon-container svg {
+  width: 100%;
+}
+.border_lines,
+.border_lines::before,
+.border_lines::after,
+.border_lines > div,
+.border_lines > div::before {
+  position: absolute;
+  border: 1px solid #fff;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+.border_lines {
+  width: 1000px;
+  height: 1000px;
+  top: -40px;
+}
+.border_lines::before,
+.border_lines::after,
+.border_lines > div,
+.border_lines > div::before {
+  content: "";
+  top: 50%;
+}
+.border_lines::before {
+  width: calc(100% - 200px);
+  height: calc(100% - 200px);
+}
+.border_lines::after {
+  width: calc(100% - 400px);
+  height: calc(100% - 400px);
+}
+.border_lines > div {
+  width: calc(100% - 600px);
+  height: calc(100% - 600px);
+}
+.border_lines > div::before {
+  width: calc(100% - 200px);
+  height: calc(100% - 200px);
 }

@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import { CoinsIcon, CoinsStackedIcon, BuildingIcon, BankIcon } from '../ui/icons'
-import { Button } from "../ui/button";
-
+import Transition from "../ui/transition";
 const ProductContainer = () => {
   const data = [
     {
@@ -29,17 +27,24 @@ const ProductContainer = () => {
   ];
 
   return (
-    <section className="max-w-fluid p-5">
+    <section className="max-w-fluid p-5 lg:pt-[6rem] relative isolate overflow-hidden">
+      <div className="border_lines -z-10 opacity-5">
+        <div />
+      </div>
       {/* <Image src={'/roundedBorder.svg'} width={200} height={200} alt=''/> */}
       <div className="flex flex-col items-center gap-5 ">
-        <p className="tag">
-          Solutions
-        </p>
-        <h1 className="text-h3 sm:text-h2 lg:text-h1 leading-[100%]">Our Products</h1>
-        <p className="max-w-[35.875rem] text-center">
-          We give you the expertise and tools to access unique liquidity and
-          manage risk across your operations.
-        </p>
+        <p className="tag">Solutions</p>
+        <Transition>
+          <h1 className="text-h3 sm:text-h2 lg:text-h1 leading-[100%]">
+            Our Products
+          </h1>
+        </Transition>
+        <Transition>
+          <p className="max-w-[35.875rem] text-center text-h6">
+            We give you the expertise and tools to access unique liquidity and
+            manage risk across your operations.
+          </p>
+        </Transition>
       </div>
 
       <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 my-10">
@@ -72,8 +77,7 @@ const ProductContainer = () => {
         </p>
       </div>
 
-          <div className="gradientLine"></div>
-
+      <div className="gradientLine"></div>
     </section>
   );
 };
