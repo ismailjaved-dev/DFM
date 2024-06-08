@@ -30,7 +30,7 @@ const HomeHero = () => {
         <Image
           src="/ellipse.png"
           width={400}
-          height={300}
+          height={190}
           alt=""
           className="hidden sm:block absolute bottom-0 -translate-x-1/2 md:bottom-0 left-1/2"
         />
